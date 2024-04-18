@@ -34,6 +34,7 @@
 block_design <- function(n_blocks = NULL, item_parameters, item_block_matrix = NULL){
 
   if (is.null(n_blocks)) n_blocks <- ncol(item_block_matrix)
+  item_parameters$item <- 1:nrow(item_parameters)
   n_items <- nrow(item_parameters)
 
   #--- build default block / item matrix
