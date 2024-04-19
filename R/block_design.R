@@ -34,7 +34,9 @@
 block_design <- function(n_blocks = NULL, item_parameters, item_block_matrix = NULL){
 
   if (is.null(n_blocks)) n_blocks <- ncol(item_block_matrix)
-  item_parameters$item <- 1:nrow(item_parameters)
+  if(! all(1:nrow(item_parameters) %in% item_parameters$item)) {
+    stop("the item_parameters argument must have a column named item that contains the integers from one to the number of rows in item_parameters")
+  }
   n_items <- nrow(item_parameters)
 
   #--- build default block / item matrix
